@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Birinci">
+    <menu>
+
+        <item android:id="@+id/nav_item_sifirinci"
+            android:title="Home"
+            android:icon="@drawable/home">
+        </item>
+            <item android:id="@+id/nav_item_birinci"
+                android:title="Note Add"
+                android:icon="@drawable/noteadd">
+            </item>
+
+        <item android:id="@+id/nav_item_ikinci"
+            android:title="Phone Add"
+            android:icon="@drawable/phoneadd">
+        </item>
+    </menu>
+    </item>
+    <item android:title="Ikinci">
+    <menu>
+        <item android:id="@+id/nav_item_ucuncu"
+            android:title="Creditcard Add"
+            android:icon="@drawable/creditcardadd">
+        </item>
+    </menu>
+    </item>
+</menu>

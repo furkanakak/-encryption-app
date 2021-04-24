@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "818096099016",
+    "project_id": "encryptionapp-7e3de",
+    "storage_bucket": "encryptionapp-7e3de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818096099016:android:ac47cdf80d874b063e9ffd",
+        "android_client_info": {
+          "package_name": "com.example.encryptionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818096099016-p1v7fjr5im4348elpjgatrb2hhv1p1kk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOMVku7jHfih-_SM3QmvQJZdJiv9q3LoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818096099016-p1v7fjr5im4348elpjgatrb2hhv1p1kk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
