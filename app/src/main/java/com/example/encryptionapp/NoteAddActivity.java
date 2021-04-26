@@ -19,8 +19,6 @@ import java.util.Calendar;
 
 public class NoteAddActivity extends NavigationDrawer {
     Toolbar toolbar;
-    FloatingActionButton notefab;
-    TextView noteheader,notecontent,noteDate;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -36,10 +34,7 @@ public class NoteAddActivity extends NavigationDrawer {
         toolbar.setTitle("Note Add Activity");
         setSupportActionBar(toolbar);
 
-        notefab = findViewById(R.id.fab_noteadd);
-        noteheader = findViewById(R.id.noteheader);
-        notecontent = findViewById(R.id.notecontent);
-        noteDate = findViewById(R.id.noteDate);
+
 
 
 

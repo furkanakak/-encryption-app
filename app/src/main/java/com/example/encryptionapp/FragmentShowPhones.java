@@ -13,27 +13,43 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 public class FragmentShowPhones extends Fragment {
-    FloatingActionButton phonefab;
-    TextView phonename;
 
+    FirebaseFirestore mfirestore;
+    FirebaseAuth auth;
+    DatabaseReference mReference;
+    FloatingActionButton phonefab;
+    HashMap<String,Object> phoneDate;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_show_phones,container,false);
+
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mfirestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        mReference = FirebaseDatabase.getInstance().getReference();
+        FirebaseUser mUser =auth.getCurrentUser();
 
         phonefab = getView().findViewById(R.id.fab_phoneshow);
-        phonename = getView().findViewById(R.id.show_name);
-
         phonefab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +67,30 @@ public class FragmentShowPhones extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        phonename.setText(name.getText().toString());
-                        Toast.makeText(getActivity().getApplicationContext(),"Save",Toast.LENGTH_SHORT).show();
+                        String isim = name.getText().toString();
+                        String soyisim = surname.getText().toString();
+                        String numara = number.getText().toString();
+
+                        phoneDate = new HashMap<>();
+                        phoneDate.put("isim",isim);
+                        phoneDate.put("soyisim",soyisim);
+                        phoneDate.put("numara",numara);
+                        UUID uuid = UUID.randomUUID();
+                       mfirestore.collection("Kullanıcılar").document(mUser.getUid()).collection("telefonlar").document(uuid.toString())
+                               .set(phoneDate)
+                               .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<Void> task) {
+                                       if (task.isSuccessful())
+                                       {
+                                           Toast.makeText(getActivity(),"Successful",Toast.LENGTH_SHORT).show();
+                                       }
+                                       else
+                                       {
+                                           Toast.makeText(getActivity(),"not isSuccessful",Toast.LENGTH_SHORT).show();
+                                       }
+                                   }
+                               });
 
                     }
                 });

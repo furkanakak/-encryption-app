@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Encryptionapp">
-        <activity android:name=".CreditcardAddActivity"></activity>
+        <activity android:name=".CredicardDesignAddActivity"></activity>
+        <activity android:name=".CreditcardAddActivity" />
         <activity android:name=".PhoneAddActivity" />
         <activity android:name=".NoteAddActivity" />
         <activity android:name=".NavigationDrawer" />
