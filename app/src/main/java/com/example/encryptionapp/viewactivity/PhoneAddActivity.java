@@ -1,17 +1,12 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.encryptionapp.R;
 
 public class PhoneAddActivity extends NavigationDrawer {
     Toolbar toolbar;

@@ -1,4 +1,4 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.encryptionapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
    signup.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View v) {
-           Intent i = new Intent(MainActivity.this,NoteAddActivity.class);
+           Intent i = new Intent(MainActivity.this, NoteAddActivity.class);
            startActivity(i);
 
        }
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(getApplicationContext(),"Login successful",Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(MainActivity.this,EnterActivity.class);
+                            Intent i = new Intent(MainActivity.this, EnterActivity.class);
                             startActivity(i);
                         }
                         else

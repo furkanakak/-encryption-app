@@ -1,4 +1,4 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.encryptionapp.R;
+import com.example.encryptionapp.model.Note;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,3 +62,5 @@ public class noteShowRVAdapter extends RecyclerView.Adapter<noteShowRVAdapter.No
 
 
 }
+
+

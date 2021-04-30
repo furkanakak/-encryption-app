@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/alert_note_header_layout_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/alert_phone_number"
+            android:id="@+id/alert_note_context"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="content"></com.google.android.material.textfield.TextInputEditText>

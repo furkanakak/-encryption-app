@@ -1,6 +1,5 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.example.encryptionapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CreditcardAddActivity extends NavigationDrawer {
@@ -30,7 +30,7 @@ public class CreditcardAddActivity extends NavigationDrawer {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(CreditcardAddActivity.this,CredicardDesignAddActivity.class);
+                Intent i = new Intent(CreditcardAddActivity.this, CredicardDesignAddActivity.class);
                 startActivity(i);
             }
         });

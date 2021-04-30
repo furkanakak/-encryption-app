@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Encryptionapp">
-        <activity android:name=".CredicardDesignAddActivity"></activity>
-        <activity android:name=".CreditcardAddActivity" />
-        <activity android:name=".PhoneAddActivity" />
-        <activity android:name=".NoteAddActivity" />
-        <activity android:name=".NavigationDrawer" />
-        <activity android:name=".EnterActivity" />
+        <activity android:name=".viewactivity.CredicardDesignAddActivity"></activity>
+        <activity android:name=".viewactivity.CreditcardAddActivity" />
+        <activity android:name=".viewactivity.PhoneAddActivity" />
+        <activity android:name=".viewactivity.NoteAddActivity" />
+        <activity android:name=".viewactivity.NavigationDrawer" />
+        <activity android:name=".viewactivity.EnterActivity" />
         <activity
-            android:name=".RecordActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:name=".viewactivity.RecordActivity"
+            android:parentActivityName=".viewactivity.MainActivity" />
+        <activity android:name=".viewactivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

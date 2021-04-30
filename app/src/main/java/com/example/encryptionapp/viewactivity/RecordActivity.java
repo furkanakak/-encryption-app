@@ -1,4 +1,4 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.encryptionapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -43,7 +44,7 @@ public class RecordActivity extends AppCompatActivity {
         sigin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(RecordActivity.this,MainActivity.class);
+                Intent i = new Intent(RecordActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });

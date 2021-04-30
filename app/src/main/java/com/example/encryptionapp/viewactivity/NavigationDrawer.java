@@ -1,7 +1,6 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,8 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.encryptionapp.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -49,20 +48,20 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId() == R.id.nav_item_sifirinci){
-            Intent i = new Intent(NavigationDrawer.this,EnterActivity.class);
+            Intent i = new Intent(NavigationDrawer.this, EnterActivity.class);
             startActivity(i);
         }
 
         if(item.getItemId() == R.id.nav_item_birinci){
-            Intent i = new Intent(NavigationDrawer.this,NoteAddActivity.class);
+            Intent i = new Intent(NavigationDrawer.this, NoteAddActivity.class);
             startActivity(i);
         }
         if(item.getItemId() == R.id.nav_item_ikinci){
-            Intent i = new Intent(NavigationDrawer.this,PhoneAddActivity.class);
+            Intent i = new Intent(NavigationDrawer.this, PhoneAddActivity.class);
             startActivity(i);
         }
         if(item.getItemId() == R.id.nav_item_ucuncu){
-            Intent i = new Intent(NavigationDrawer.this,CreditcardAddActivity.class);
+            Intent i = new Intent(NavigationDrawer.this, CreditcardAddActivity.class);
             startActivity(i);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -98,7 +97,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         if(item.getItemId() == R.id.exit)
         {
             FirebaseAuth.getInstance().signOut();
-            Intent i = new Intent(NavigationDrawer.this,MainActivity.class);
+            Intent i = new Intent(NavigationDrawer.this, MainActivity.class);
             startActivity(i);
             finish();
         }

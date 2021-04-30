@@ -1,21 +1,13 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Calendar;
+import com.example.encryptionapp.R;
 
 public class NoteAddActivity extends NavigationDrawer {
     Toolbar toolbar;

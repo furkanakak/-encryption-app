@@ -1,7 +1,6 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewfragment;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,12 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.encryptionapp.R;
+import com.example.encryptionapp.adapter.noteShowRVAdapter;
+import com.example.encryptionapp.adapter.phoneShowRVAdapter;
+import com.example.encryptionapp.model.Note;
+import com.example.encryptionapp.model.Phone;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,13 +32,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -51,13 +50,15 @@ public class FragmentShowNotes extends Fragment {
     FloatingActionButton fab_noteadd;
     HashMap<String, Object> noteDate;
     RecyclerView recyclerView;
-    List<DocumentSnapshot> doclist;
-    ArrayList<Note> notesList = new ArrayList<Note>();
-    ArrayList<Note> notehaderList = new ArrayList<Note>();
-    CollectionReference collectionReference;
     noteShowRVAdapter adapter;
-    DatePickerDialog.OnDateSetListener setListener
-            ;
+    List<DocumentSnapshot> doclist;
+    ArrayList<Note> noteList = new ArrayList<Note>();
+    CollectionReference collectionReference;
+    DatePickerDialog.OnDateSetListener setListener;
+
+
+
+
 
     @Nullable
     @Override
@@ -71,27 +72,33 @@ public class FragmentShowNotes extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         mfirestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         mReference = FirebaseDatabase.getInstance().getReference();
         FirebaseUser mUser = auth.getCurrentUser();
+        notedataget(mUser.getUid());
+
+
 
         fab_noteadd = getView().findViewById(R.id.fab_noteadd_show);
-
         recyclerView = view.findViewById(R.id.recyclerView_noteShow);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        notedataget(mUser.getUid());
-        adapter = new noteShowRVAdapter(getActivity(),notesList);
+
+        adapter = new noteShowRVAdapter(getContext(),noteList);
         recyclerView.setAdapter(adapter);
+
+
+
+
 
         fab_noteadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                notedataget(mUser.getUid());
                 View design = getLayoutInflater().inflate(R.layout.alert_design_note, null);
                 TextInputEditText headar = design.findViewById(R.id.alert_note_header);
-                TextInputEditText content = design.findViewById(R.id.alert_phone_number);
+                TextInputEditText content = design.findViewById(R.id.alert_note_context);
                 TextView calenderShow = design.findViewById(R.id.alert_note_calender);
 
 
@@ -155,7 +162,7 @@ public class FragmentShowNotes extends Fragment {
 
                                     }
                                 });
-
+                        notedataget(mUser.getUid());
                     }
                 });
 
@@ -166,19 +173,13 @@ public class FragmentShowNotes extends Fragment {
                         Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
 
                     }
-                });
-                ad.create().show();
-
+                });   ad.create().show();
 
             }
         });
 
 
-
-
-
     }
-
 
     public void notedataget(String uid) {
         collectionReference = mfirestore.collection("Kullanıcılar").document(uid).collection("Notlar");
@@ -188,26 +189,29 @@ public class FragmentShowNotes extends Fragment {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         doclist = new ArrayList<DocumentSnapshot>();
                         doclist =queryDocumentSnapshots.getDocuments();
-                        notesList.clear();
+                        noteList.clear();
                         for (int i=0; i<doclist.size(); i++) {
                             if(doclist.get(i).exists())
                             {
                                 String header = (String) doclist.get(i).get("notBaslik");
-                                String context = (String) doclist.get(i).get("notIcerik");
+                                String content = (String) doclist.get(i).get("notIcerik");
                                 String date = (String) doclist.get(i).get("notTarih");
-                                Note note = new Note(header,context,date);
-                                System.out.print(header);
-                                System.out.print(context);
-                                System.out.print(date);
-                                System.out.println("");
-                                notesList.add(note);
+                                Note note = new Note(header,content,date);
+                                noteList.add(note);
                             }
                             adapter.notifyDataSetChanged();
 
                         }
                     }
-                });
+                }); }
+
+
+
+
+
+
     }
 
 
-}
+
+

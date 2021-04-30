@@ -1,4 +1,4 @@
-package com.example.encryptionapp;
+package com.example.encryptionapp.viewactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -11,13 +11,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.example.encryptionapp.viewfragment.FragmentShowCreditcards;
+import com.example.encryptionapp.viewfragment.FragmentShowNotes;
+import com.example.encryptionapp.viewfragment.FragmentShowPhones;
+import com.example.encryptionapp.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class EnterActivity extends NavigationDrawer  {
+public class EnterActivity extends NavigationDrawer {
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager2 viewPager2;
